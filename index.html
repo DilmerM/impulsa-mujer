@@ -125,7 +125,7 @@
             </div>
         </div>
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-purple-700 hover:bg-brand-purple-50">Propósito</a>
                 <a href="#services" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-purple-700 hover:bg-brand-purple-50">Servicios para PYMES</a>
@@ -806,17 +806,6 @@
                         <li><a href="#" class="hover:text-brand-gold-300 transition-colors">Política de Cookies</a></li>
                     </ul>
                 </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Newsletter</h4>
-                    <p class="text-brand-purple-100 text-sm mb-4">Recibe inspiración semanal y ofertas exclusivas.</p>
-                    <div class="flex">
-                        <input type="email" placeholder="Tu email" class="px-4 py-2 w-full rounded-l-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-gold-500">
-                        <button class="bg-brand-gold-500 hover:bg-brand-gold-600 text-white px-4 py-2 rounded-r-md transition-colors">
-                            <i class="fas fa-check"></i>
-                        </button>
-                    </div>
-                </div>
             </div>
             
             <div class="text-center text-white text-sm">
@@ -832,13 +821,15 @@
         const menu = document.getElementById('mobile-menu');
 
         btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+            menu.classList.toggle('show');
+            btn.classList.toggle('active');
         });
 
         // Close mobile menu on link click
         menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                menu.classList.add('hidden');
+                menu.classList.remove('show');
+                btn.classList.remove('active');
             });
         });
 

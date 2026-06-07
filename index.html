@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulsa Mujer | Impulsando mujeres en empresarias</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind Config for Custom Colors & Fonts -->
+    <link href="img/Logo.ico" rel="icon">
+    <!-- Carousel CSS -->
+    <link href="css/carousel.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: {
+                                900: '#3A1054', // Dark, rich purple
+                                800: '#5A1882',
+                                700: '#7B21B0', // Primary purple
+                                600: '#9C34DC',
+                                100: '#F3E8FA', // Light purple bg
+                                50: '#F9F5FD',
+                            },
+                            gold: {
+                                900: '#8A6D3B',
+                                700: '#B8860B', // Primary gold
+                                500: '#D4AF37', // Light gold
+                                300: '#EEDC82',
+                                100: '#FDF8E7',
+                            }
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Styles for specific details */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3); /* Gold border */
+        }
+        
+        .gold-text-gradient {
+            background: linear-gradient(to right, #D4AF37, #B8860B, #8A6D3B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gold-border-gradient {
+            border: 2px solid;
+            border-image-slice: 1;
+            border-width: 2px;
+            border-image-source: linear-gradient(to right, #D4AF37, #B8860B);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(123, 33, 176, 0.2);
+        }
+
+        /* Modern Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 60s linear infinite;
+        }
+        .marquee-container:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="font-body text-gray-800 bg-brand-purple-50 antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm border-b border-brand-gold-100" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center">
+                        <img src="img/Logo.png" alt="Impulsa Mujer Logo" class="h-12 w-auto">
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-gray-600 hover:text-brand-purple-700 font-medium transition-colors">Propósito</a>
+                    <a href="#services" class="text-gray-600 hover:text-brand-purple-700 font-medium transition-colors">Servicios</a>
+                    <a href="#gallery" class="text-gray-600 hover:text-brand-purple-700 font-medium transition-colors">Galería</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-brand-purple-700 font-medium transition-colors">Historias</a>
+                    <a href="#contact" class="bg-brand-purple-700 hover:bg-brand-purple-900 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg border border-transparent hover:border-brand-gold-500">
+                        Únete Ahora
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-purple-700 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-purple-700 hover:bg-brand-purple-50">Propósito</a>
+                <a href="#services" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-purple-700 hover:bg-brand-purple-50">Servicios</a>
+                <a href="#gallery" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-purple-700 hover:bg-brand-purple-50">Galería</a>
+                <a href="#testimonials" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-brand-purple-700 hover:bg-brand-purple-50">Historias</a>
+                <a href="#contact" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-medium bg-brand-purple-700 text-white hover:bg-brand-purple-900">Únete Ahora</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-12 lg:pt-32 lg:pb-20 overflow-hidden bg-brand-purple-100">
+        <!-- Abstract Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div class="absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full bg-brand-purple-50 blur-3xl opacity-60"></div>
+            <div class="absolute bottom-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-brand-gold-100 blur-3xl opacity-70"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+                <!-- Hero Content -->
+                <div class="lg:col-span-6 text-center lg:text-left mb-10 lg:mb-0">
+                  
+                    <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-purple-900 leading-tight mb-4">
+                        Transforma tu <br class="hidden sm:block" />
+                        <span class="gold-text-gradient">Visión</span> en <br class="hidden sm:block" />
+                        una realidad empresarial.
+                    </h1>
+                    <p class="text-base sm:text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Fortalecemos tus capacidades personales, profesionales y empresariales promoviendo el liderazgo, la innovación y el crecimiento sostenible.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-3">
+                        <a href="#contact" class="bg-gradient-to-r from-brand-purple-700 to-brand-purple-900 text-white px-6 py-3 rounded-full font-bold text-base hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
+                            Comienza tu viaje
+                        </a>
+                        <a href="#about" class="bg-white text-brand-purple-900 border border-brand-purple-200 px-6 py-3 rounded-full font-bold text-base hover:bg-brand-purple-50 hover:border-brand-purple-300 transition-all duration-300 text-center flex items-center justify-center gap-2">
+                            Saber más <i class="fas fa-arrow-down text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Hero Image with Carousel -->
+                <div class="lg:col-span-6 relative max-w-lg mx-auto lg:mx-0">
+                    <!-- Decorative Gold Ring -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border-2 border-dashed border-brand-gold-500 rounded-full animate-[spin_60s_linear_infinite] opacity-30"></div>
+                    
+                    <div class="relative z-10 rounded-t-full rounded-br-full overflow-hidden border-4 border-white shadow-2xl">
+                        <!-- Carousel Container -->
+                        <div class="hero-carousel-small" id="hero-carousel-small" style="height: 500px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features / Why Us Section -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold text-brand-purple-900 mb-4">Nuestra Identidad Corporativa</h2>
+                <div class="h-1 w-24 bg-brand-gold-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 text-lg">Conoce los pilares que guían nuestro trabajo y nuestro compromiso con tu desarrollo integral y empresarial.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                <!-- Misión -->
+                <div class="bg-brand-purple-50 rounded-3xl p-8 hover-lift border border-transparent hover:border-brand-purple-200">
+                    <div class="flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden">
+                            <img src="img/mision.png" alt="Misión" class="w-full h-full object-contain mission-vision-image">
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="font-heading text-xl font-bold text-brand-purple-900 mb-3">Misión</h3>
+                            <p class="text-gray-600 leading-relaxed text-sm">Brindar servicios de capacitación, consultoría y desarrollo de proyectos que fortalezcan las capacidades personales, profesionales y empresariales de la comunidad, promoviendo el liderazgo, la innovación y el crecimiento sostenible mediante soluciones de calidad y acompañamiento especializado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visión -->
+                <div class="bg-brand-purple-50 rounded-3xl p-8 hover-lift border border-transparent hover:border-brand-purple-200 relative transform md:-translate-y-6">
+                    <!-- Highlight Ribbon -->
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-gold-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-md">
+                        Nuestro Norte
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden">
+                            <img src="img/vision.png" alt="Visión" class="w-full h-full object-contain mission-vision-image">
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="font-heading text-xl font-bold text-brand-purple-900 mb-3">Visión</h3>
+                            <p class="text-gray-600 leading-relaxed text-sm">Ser una empresa líder en capacitación, consultoría y gestión de proyectos, reconocida por impulsar el desarrollo integral de las comunidades y contribuir a la creación de oportunidades que generen impacto positivo en la sociedad y el ámbito empresarial.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infinite Values Marquee -->
+        <div id="nuestros-valores" class="mt-20 py-12 bg-brand-purple-50 border-y border-brand-purple-100 overflow-hidden relative marquee-container shadow-inner">
+            <div class="animate-marquee flex items-center">
+                <!-- Original Set -->
+                <div class="flex items-center gap-16 px-8">
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-crown text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Liderazgo</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Inspiramos a cada mujer a ser la arquitecta de su propio destino y éxito.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-hand-holding-heart text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Compromiso</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Dedicación total hacia el crecimiento sostenible de tu visión empresarial.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-balance-scale text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Ética</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Transparencia e integridad absoluta en cada proceso y decisión corporativa.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-lightbulb text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Innovación</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Búsqueda constante de soluciones creativas para los retos del mercado.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-globe-americas text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Responsabilidad</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Conciencia del impacto social y empresarial que generamos en el entorno.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-users-viewfinder text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Inclusión</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Espacios equitativos donde la diversidad de talento es nuestra fuerza.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-gem text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Excelencia</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Compromiso inquebrantable con los más altos estándares de calidad.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-people-group text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Equipo</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Colaboración y apoyo mutuo como motor de nuestro crecimiento colectivo.</p>
+                    </div>
+                </div>
+
+                <!-- Duplicate Set for Seamless Loop -->
+                <div class="flex items-center gap-16 px-8">
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-crown text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Liderazgo</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Inspiramos a cada mujer a ser la arquitecta de su propio destino y éxito.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-hand-holding-heart text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Compromiso</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Dedicación total hacia el crecimiento sostenible de tu visión empresarial.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-balance-scale text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Ética</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Transparencia e integridad absoluta en cada proceso y decisión corporativa.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-lightbulb text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Innovación</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Búsqueda constante de soluciones creativas para los retos del mercado.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-globe-americas text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Responsabilidad</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Conciencia del impacto social y empresarial que generamos en el entorno.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-users-viewfinder text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Inclusión</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Espacios equitativos donde la diversidad de talento es nuestra fuerza.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-gem text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Excelencia</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Compromiso inquebrantable con los más altos estándares de calidad.</p>
+                    </div>
+                    <div class="text-brand-gold-500 opacity-50 text-2xl">✦</div>
+                    <div class="flex flex-col min-w-[300px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-people-group text-brand-purple-700 text-xl"></i>
+                            <span class="text-brand-purple-900 font-bold uppercase tracking-widest">Equipo</span>
+                        </div>
+                        <p class="text-gray-600 text-xs leading-relaxed">Colaboración y apoyo mutuo como motor de nuestro crecimiento colectivo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-brand-purple-900 text-white relative overflow-hidden">
+        <!-- Gold decorative elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold-700 rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-brand-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 transform -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <span class="text-brand-gold-500 uppercase tracking-widest font-bold text-sm">Nuestros servicios</span>
+                    <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 mt-2">Nuestras áreas de práctica</h2>
+                    <p class="text-brand-purple-100 text-lg">Soluciones integrales en capacitación, consultoría y desarrollo de proyectos para el crecimiento personal y empresarial.</p>
+                </div>
+                <a href="#contact" class="hidden md:inline-block border border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-purple-900 px-6 py-3 rounded-full font-semibold transition-colors duration-300">
+                    Ver más servicios
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service Card 1 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-40 bg-brand-purple-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Capacitación Empresarial" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+                        <div class="absolute top-4 left-4 bg-brand-gold-500 text-brand-purple-900 text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-2">
+                            <i class="fas fa-building"></i> Formación
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold mb-3 text-white">Capacitación Empresarial</h3>
+                        <p class="text-brand-purple-100 text-sm mb-6 line-clamp-3">Fortalecemos las capacidades profesionales y empresariales mediante programas de formación especializada.</p>
+                        <a href="#" class="text-brand-gold-300 hover:text-brand-gold-500 font-semibold inline-flex items-center gap-2 group text-sm">
+                            Conocer más <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-brand-gold-500/50 hover:-translate-y-2 transition-transform duration-300 relative shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                    <div class="h-40 bg-brand-purple-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Consultoría de Negocios" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+                        <div class="absolute top-4 left-4 bg-brand-gold-500 text-brand-purple-900 text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-2">
+                            <i class="fas fa-chart-line"></i> Estrategia
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold mb-3 text-white">Consultoría de Negocios</h3>
+                        <p class="text-brand-purple-100 text-sm mb-6 line-clamp-3">Acompañamiento especializado para el desarrollo y crecimiento de tu emprendimiento.</p>
+                        <a href="#" class="text-brand-gold-300 hover:text-brand-gold-500 font-semibold inline-flex items-center gap-2 group text-sm">
+                            Conocer más <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-40 bg-brand-purple-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Desarrollo de Proyectos" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+                        <div class="absolute top-4 left-4 bg-brand-gold-500 text-brand-purple-900 text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-2">
+                            <i class="fas fa-laptop-code"></i> Gestión
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold mb-3 text-white">Desarrollo de Proyectos</h3>
+                        <p class="text-brand-purple-100 text-sm mb-6 line-clamp-3">Gestión integral de proyectos que generan impacto positivo en la comunidad.</p>
+                        <a href="#" class="text-brand-gold-300 hover:text-brand-gold-500 font-semibold inline-flex items-center gap-2 group text-sm">
+                            Conocer más <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-40 bg-brand-purple-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Liderazgo e Innovación" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+                        <div class="absolute top-4 left-4 bg-brand-gold-500 text-brand-purple-900 text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-2">
+                            <i class="fas fa-bullhorn"></i> Impacto
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold mb-3 text-white">Liderazgo e Innovación</h3>
+                        <p class="text-brand-purple-100 text-sm mb-6 line-clamp-3">Fomentamos el liderazgo y la innovación para el crecimiento sostenible.</p>
+                        <a href="#" class="text-brand-gold-300 hover:text-brand-gold-500 font-semibold inline-flex items-center gap-2 group text-sm">
+                            Conocer más <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-40 bg-brand-purple-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Desarrollo" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+                        <div class="absolute top-4 left-4 bg-brand-gold-500 text-brand-purple-900 text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-2">
+                            <i class="fas fa-rocket"></i> Crecimiento
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold mb-3 text-white">Desarrollo</h3>
+                        <p class="text-brand-purple-100 text-sm mb-6 line-clamp-3">Fortalecimiento y apoyo para MIPyMEs en su crecimiento empresarial.</p>
+                        <a href="#" class="text-brand-gold-300 hover:text-brand-gold-500 font-semibold inline-flex items-center gap-2 group text-sm">
+                            Conocer más <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-40 bg-brand-purple-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Infraestructura" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+                        <div class="absolute top-4 left-4 bg-brand-gold-500 text-brand-purple-900 text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-2">
+                            <i class="fas fa-hard-hat"></i> Construcción
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold mb-3 text-white">Infraestructura</h3>
+                        <p class="text-brand-purple-100 text-sm mb-6 line-clamp-3">Ingeniería y obras civiles para proyectos locales y regionales.</p>
+                        <a href="#" class="text-brand-gold-300 hover:text-brand-gold-500 font-semibold inline-flex items-center gap-2 group text-sm">
+                            Conocer más <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 7 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-40 bg-brand-purple-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Especialización" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+                        <div class="absolute top-4 left-4 bg-brand-gold-500 text-brand-purple-900 text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-2">
+                            <i class="fas fa-cogs"></i> Técnica
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold mb-3 text-white">Especialización</h3>
+                        <p class="text-brand-purple-100 text-sm mb-6 line-clamp-3">Sistemas técnicos y soluciones industriales para mejorar procesos.</p>
+                        <a href="#" class="text-brand-gold-300 hover:text-brand-gold-500 font-semibold inline-flex items-center gap-2 group text-sm">
+                            Conocer más <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 8 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-40 bg-brand-purple-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Finanzas" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+                        <div class="absolute top-4 left-4 bg-brand-gold-500 text-brand-purple-900 text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-2">
+                            <i class="fas fa-coins"></i> Capital
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold mb-3 text-white">Finanzas</h3>
+                        <p class="text-brand-purple-100 text-sm mb-6 line-clamp-3">Asesoría financiera y gestión de capital para emprendedores.</p>
+                        <a href="#" class="text-brand-gold-300 hover:text-brand-gold-500 font-semibold inline-flex items-center gap-2 group text-sm">
+                            Conocer más <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service Card 9 -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-40 bg-brand-purple-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Visión Global" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+                        <div class="absolute top-4 left-4 bg-brand-gold-500 text-brand-purple-900 text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-2">
+                            <i class="fas fa-globe"></i> Redes
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-heading text-xl font-bold mb-3 text-white">Visión Global</h3>
+                        <p class="text-brand-purple-100 text-sm mb-6 line-clamp-3">Alianzas estratégicas y networking para oportunidades de crecimiento.</p>
+                        <a href="#" class="text-brand-gold-300 hover:text-brand-gold-500 font-semibold inline-flex items-center gap-2 group text-sm">
+                            Conocer más <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 text-center md:hidden">
+                <a href="#contact" class="inline-block border border-brand-gold-500 text-brand-gold-500 px-8 py-3 rounded-full font-semibold">
+                    Ver más servicios
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold text-brand-purple-900 mb-4">Nuestra Comunidad en Acción</h2>
+                <div class="h-1 w-24 bg-brand-gold-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 text-lg">Un vistazo a nuestros talleres, consultorías y el impacto que generamos juntas en el mundo empresarial.</p>
+            </div>
+
+            <!-- Bento Box Style Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
+                
+                <!-- Image 1 (Large, spans 2 cols & 2 rows) -->
+                <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-md h-72 md:h-full cursor-pointer">
+                    <img src="img/carousel/emprendedora1.png" alt="Empoderamiento Femenino" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-purple-900/95 via-brand-purple-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 md:p-8 border-b-4 border-brand-gold-500">
+                        <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="bg-brand-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">Éxito</span>
+                            <h3 class="text-white font-heading font-bold text-2xl md:text-3xl mt-1">Visión Empresarial</h3>
+                            <p class="text-brand-purple-100 mt-2 text-sm md:text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Mujeres liderando con determinación y propósito.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image 2 -->
+                <div class="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-2xl shadow-md h-64 md:h-full cursor-pointer">
+                    <img src="img/carousel/emprendedora2.png" alt="Colaboración" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-brand-purple-900/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center p-4 border-b-4 border-brand-gold-500">
+                        <div class="scale-90 group-hover:scale-100 transition-transform duration-300">
+                            <i class="fas fa-handshake text-brand-gold-500 text-3xl mb-3"></i>
+                            <h3 class="text-white font-bold text-lg">Alianzas</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image 3 -->
+                <div class="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-2xl shadow-md h-64 md:h-full cursor-pointer">
+                    <img src="img/carousel/emprendedora3.png" alt="Crecimiento" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-brand-purple-900/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center p-4 border-b-4 border-brand-gold-500">
+                        <div class="scale-90 group-hover:scale-100 transition-transform duration-300">
+                            <i class="fas fa-rocket text-brand-gold-500 text-3xl mb-3"></i>
+                            <h3 class="text-white font-bold text-lg">Innovación</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image 4 (Spans 2 cols) -->
+                <div class="md:col-span-2 md:row-span-1 relative group overflow-hidden rounded-2xl shadow-md h-64 md:h-full cursor-pointer">
+                    <img src="img/carousel/emprendedora4.png" alt="Liderazgo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-purple-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 border-b-4 border-brand-gold-500">
+                        <div class="translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-heading font-bold text-xl md:text-2xl">Impacto Social</h3>
+                            <p class="text-brand-purple-100 text-sm mt-1">Transformando comunidades a través del emprendimiento.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#contact" class="inline-flex items-center gap-2 text-brand-purple-700 hover:text-brand-gold-700 font-bold transition-colors text-lg">
+                    <i class="fab fa-instagram text-2xl"></i> Síguenos para ver más
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    </section>
+
+    <!-- Entrepreneurial Tips Section (Formerly Animated Notifications) -->
+    <section id="tips" class="py-16 bg-brand-purple-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-brand-purple-900 mb-6">Sabiduría para <span class="gold-text-gradient">Emprender</span></h2>
+                    <p class="text-gray-600 text-lg mb-8">Pequeñas dosis de inspiración y estrategias prácticas diseñadas para fortalecer tu mentalidad y acelerar el crecimiento de tu negocio.</p>
+                    <div class="flex items-center gap-4 p-5 bg-white rounded-2xl border-l-4 border-brand-gold-500 shadow-md">
+                        <div class="w-12 h-12 bg-brand-gold-100 rounded-full flex items-center justify-center text-brand-gold-600 flex-shrink-0">
+                            <i class="fas fa-lightbulb text-xl animate-pulse"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-brand-purple-900">Consejo del Día</p>
+                            <p class="text-sm text-gray-500 font-medium italic">"Tu mayor activo eres tú misma. Invierte en tu crecimiento."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative h-[450px] w-full max-w-[480px] mx-auto overflow-hidden p-4 bg-white/40 backdrop-blur-sm rounded-3xl border border-white shadow-inner">
+                    <div id="tips-list-container" class="flex flex-col gap-5">
+                        <!-- Tips will be injected here by JS -->
+                    </div>
+                    <!-- Gradient Overlay for fade effect -->
+                    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-brand-purple-50/80 to-transparent pointer-events-none"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Data for Wisdom Tips
+        const entrepreneurialTips = [
+            // Liderazgo y Mentalidad
+            { category: "Liderazgo", text: "Una Girlboss no espera las oportunidades; aprende a crearlas con su propio esfuerzo.", icon: "👑", color: "#B8860B" },
+            { category: "Superación", text: "El éxito no se mide por lo que logras, sino por los obstáculos que superas.", icon: "🧗‍♀️", color: "#7B21B0" },
+            { category: "Visión", text: "Tu idea no es demasiado grande; a veces el entorno es demasiado pequeño. Sigue expandiéndote.", icon: "🌍", color: "#1E86FF" },
+            { category: "Mentalidad", text: "El liderazgo es ser la dueña y arquitecta de tu propio destino.", icon: "🏗️", color: "#00C9A7" },
+            { category: "Aprendizaje", text: "Abandona el miedo a equivocarte; o se gana o se aprende, pero jamás se pierde.", icon: "🎯", color: "#FF3D71" },
+            
+            // Estrategia y Negocios
+            { category: "Independencia", text: "La verdadera independencia comienza cuando conviertes tu talento en ingresos.", icon: "💰", color: "#D4AF37" },
+            { category: "Libertad", text: "No trabajes solo por dinero; construye un activo que te dé libertad de elegir.", icon: "🕊️", color: "#9C34DC" },
+            { category: "Valor", text: "El valor de tu negocio está en el problema real que resuelves a tu comunidad.", icon: "🤝", color: "#FFB800" },
+            { category: "Finanzas", text: "Las finanzas claras son los cimientos de un imperio sostenible.", icon: "📊", color: "#00C9A7" },
+            { category: "Crecimiento", text: "Invertir en tu formación es la única inversión con retorno 100% garantizado.", icon: "📚", color: "#1E86FF" },
+            
+            // Persistencia
+            { category: "Resistencia", text: "Emprender es un camino de resistencia, no de velocidad. Cada paso cuenta.", icon: "👟", color: "#B8860B" },
+            { category: "Constancia", text: "El éxito requiere constancia, no perfección. Levántate un día más.", icon: "🔄", color: "#7B21B0" },
+            { category: "Identidad", text: "Tu historia y tus raíces son tu mayor ventaja competitiva; úsalas.", icon: "🌱", color: "#D4AF37" },
+            { category: "Disciplina", text: "Las grandes marcas nacen de la disciplina diaria de no rendirse.", icon: "🏆", color: "#FF3D71" },
+            { category: "Impacto", text: "Cuando una mujer transforma su realidad, transforma la economía de su entorno.", icon: "🦋", color: "#9C34DC" },
+            
+            // Comunidad
+            { category: "Alianzas", text: "El talento gana partidos, pero las alianzas estratégicas construyen empresas.", icon: "🤜🤛", color: "#1E86FF" },
+            { category: "Apoyo", text: "Apoyar el emprendimiento local es el motor que impulsa los sueños de una familia.", icon: "🏠", color: "#FFB800" },
+            { category: "Colaboración", text: "Cuando las emprendedoras se apoyan, la colaboración supera a la competencia.", icon: "👯‍♀️", color: "#00C9A7" },
+            { category: "Estrategia", text: "Formalizar tu negocio es el paso para dejar de ser proyecto y ser empresa.", icon: "📜", color: "#B8860B" },
+            { category: "Determinación", text: "Detrás de cada mujer exitosa hay una decisión inquebrantable de no detenerse.", icon: "💎", color: "#7B21B0" }
+        ];
+
+        function createTipElement(item) {
+            const figure = document.createElement('figure');
+            figure.className = 'relative mx-auto min-h-fit w-full cursor-pointer overflow-hidden rounded-2xl p-5 transition-all duration-700 ease-in-out hover:scale-[102%] bg-white border border-brand-gold-100 shadow-md transform-gpu opacity-0 translate-y-10';
+            
+            figure.innerHTML = `
+                <div class="flex flex-row items-start gap-4">
+                    <div class="flex-shrink-0 flex size-12 items-center justify-center rounded-xl shadow-inner" style="background-color: ${item.color}20; color: ${item.color}">
+                        <span class="text-2xl">${item.icon}</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xs font-bold uppercase tracking-widest mb-1" style="color: ${item.color}">${item.category}</span>
+                        <p class="text-sm sm:text-base font-medium text-brand-purple-900 leading-relaxed italic">"${item.text}"</p>
+                    </div>
+                </div>
+            `;
+            return figure;
+        }
+
+        const tipsContainer = document.getElementById('tips-list-container');
+        let lastTipIndex = -1;
+
+        function updateTips() {
+            if (tipsContainer.children.length > 3) {
+                const oldest = tipsContainer.lastElementChild;
+                oldest.classList.add('opacity-0', 'scale-90', 'blur-sm');
+                setTimeout(() => oldest.remove(), 500);
+            }
+
+            // Random selection without immediate repeat
+            let currentTipIndex;
+            do {
+                currentTipIndex = Math.floor(Math.random() * entrepreneurialTips.length);
+            } while (currentTipIndex === lastTipIndex);
+            
+            lastTipIndex = currentTipIndex;
+            const item = entrepreneurialTips[currentTipIndex];
+            
+            const el = createTipElement(item);
+            tipsContainer.prepend(el);
+
+            setTimeout(() => {
+                el.classList.remove('opacity-0', 'translate-y-10');
+                el.classList.add('opacity-100', 'translate-y-0');
+            }, 50);
+        }
+
+        // Faster interval (2 seconds)
+        setInterval(updateTips, 2000);
+        updateTips();
+    </script>
+
+    <!-- CTA / Contact Section -->
+    <section id="contact" class="py-24 relative overflow-hidden bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-gradient-to-br from-brand-purple-900 to-brand-purple-700 rounded-3xl overflow-hidden shadow-2xl p-10 lg:p-16 text-center relative">
+                
+                <!-- Decorative Elements -->
+                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-purple-600 rounded-full mix-blend-screen opacity-50"></div>
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-gold-700 rounded-full mix-blend-screen opacity-30"></div>
+                
+                <div class="relative z-10 flex flex-col items-center">
+                    <h2 class="font-heading text-4xl lg:text-5xl font-bold mb-4 text-white">Da el primer paso hoy</h2>
+                    <p class="text-brand-purple-100 mb-10 font-light text-lg max-w-2xl">Estamos listas para escucharte. Contáctanos por cualquiera de nuestros canales para comenzar tu proceso de transformación empresarial.</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full justify-center items-center">
+                        <!-- Email -->
+                        <a href="mailto:Impulsamujer2026@gmail.com" class="flex flex-col items-center gap-3 p-6 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-brand-gold-500 transition-all duration-300 w-full sm:w-auto group">
+                            <div class="w-16 h-16 rounded-full bg-brand-purple-800 flex items-center justify-center text-brand-gold-500 shadow-inner group-hover:scale-110 transition-transform">
+                                <i class="fas fa-envelope text-2xl"></i>
+                            </div>
+                            <span class="text-white font-medium text-lg break-all">Impulsamujer2026@gmail.com</span>
+                        </a>
+                        
+                        <!-- Phone/WhatsApp -->
+                        <a href="tel:+50493560903" class="flex flex-col items-center gap-3 p-6 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-brand-gold-500 transition-all duration-300 w-full sm:w-auto group">
+                            <div class="w-16 h-16 rounded-full bg-brand-purple-800 flex items-center justify-center text-brand-gold-500 shadow-inner group-hover:scale-110 transition-transform">
+                                <i class="fab fa-whatsapp text-3xl"></i>
+                            </div>
+                            <span class="text-white font-medium text-lg">+504 9356-0903</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-purple-900 pt-16 pb-8 border-t-4 border-brand-gold-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 border-b border-brand-purple-700 pb-12">
+                <div class="md:col-span-1">
+                    <a href="#" class="block mb-6">
+                        <img src="img/Logo.png" alt="Impulsa Mujer Logo" class="h-16 w-auto">
+                    </a>
+                    <p class="text-brand-purple-100 text-sm leading-relaxed mb-6">
+                        Impulsando mujeres en empresarias mediante soluciones de calidad y acompañamiento especializado.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-purple-800 flex items-center justify-center text-white hover:bg-brand-gold-500 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-purple-800 flex items-center justify-center text-white hover:bg-brand-gold-500 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-purple-800 flex items-center justify-center text-white hover:bg-brand-gold-500 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Enlaces</h4>
+                    <ul class="space-y-3 text-brand-purple-100 text-sm">
+                        <li><a href="#about" class="hover:text-brand-gold-300 transition-colors">Nuestro Propósito</a></li>
+                        <li><a href="#services" class="hover:text-brand-gold-300 transition-colors">Servicios</a></li>
+                        <li><a href="#testimonials" class="hover:text-brand-gold-300 transition-colors">Testimonios</a></li>
+                        <li><a href="#" class="hover:text-brand-gold-300 transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Legal</h4>
+                    <ul class="space-y-3 text-brand-purple-100 text-sm">
+                        <li><a href="#" class="hover:text-brand-gold-300 transition-colors">Términos y Condiciones</a></li>
+                        <li><a href="#" class="hover:text-brand-gold-300 transition-colors">Política de Privacidad</a></li>
+                        <li><a href="#" class="hover:text-brand-gold-300 transition-colors">Política de Cookies</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Newsletter</h4>
+                    <p class="text-brand-purple-100 text-sm mb-4">Recibe inspiración semanal y ofertas exclusivas.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Tu email" class="px-4 py-2 w-full rounded-l-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-gold-500">
+                        <button class="bg-brand-gold-500 hover:bg-brand-gold-600 text-white px-4 py-2 rounded-r-md transition-colors">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center text-brand-purple-200 text-sm">
+                <p>&copy; 2026 Impulsa Mujer. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar hide/show on scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Add background/shadow when not at top
+            if (scrollTop > 10) {
+                navbar.classList.add('shadow-md', 'bg-white/95');
+                navbar.classList.remove('bg-white/90', 'shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-md', 'bg-white/95');
+                navbar.classList.add('bg-white/90', 'shadow-sm');
+            }
+
+            // Hide/Show logic based on scroll direction
+            if (scrollTop > lastScrollTop && scrollTop > 80) {
+                // Scrolling down & past navbar height -> hide
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up or at top -> show
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+        });
+    </script>
+    
+    <!-- Carousel JS -->
+    <script src="js/carousel.js"></script>
+</body>
+</html>
